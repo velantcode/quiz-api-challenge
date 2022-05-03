@@ -1,0 +1,4 @@
+{
+  "verbose": true,
+  "ignore": ["./dist", "./Docs", "./node_modules", "./public", "*.json"]
+}

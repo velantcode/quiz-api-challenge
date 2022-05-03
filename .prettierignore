@@ -1,0 +1,7 @@
+node_modules
+public/*
+dist/*
+Docs/*
+PostmanFiles/*
+package-lock.json
+yarn.lock
