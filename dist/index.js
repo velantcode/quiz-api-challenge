@@ -16,7 +16,11 @@ var _morgan = _interopRequireDefault(require("morgan"));
 
 var _database = _interopRequireDefault(require("./database"));
 
-var _IndexRouter = _interopRequireDefault(require("./Routes/IndexRouter"));
+var _ApiIndexRouter = _interopRequireDefault(require("./Routes/ApiIndexRouter"));
+
+var _Error404Router = _interopRequireDefault(require("./Routes/Error404Router"));
+
+var _IndexBaseRouter = _interopRequireDefault(require("./Routes/IndexBaseRouter"));
 
 var _QuizRouter = _interopRequireDefault(require("./Routes/QuizRouter"));
 
@@ -38,11 +42,12 @@ app.use(_express["default"].json({
 }));
 app.use(_express["default"]["static"]('public')); // routes
 
-app.use('/', _IndexRouter["default"]);
-app.use('/api/', _IndexRouter["default"]);
+app.use('/', _IndexBaseRouter["default"]);
+app.use('/api/', _ApiIndexRouter["default"]);
 app.use('/api/quiz', _QuizPublicRouter["default"]);
 app.use('/api/user', _UsersRouter["default"]);
 app.use('/api/user/quiz', _QuizRouter["default"]);
+app.use('/*', _Error404Router["default"]);
 app.listen(app.get('port'), /*#__PURE__*/(0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee() {
   return _regenerator["default"].wrap(function _callee$(_context) {
     while (1) {

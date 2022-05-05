@@ -3,7 +3,9 @@ import dotenv from 'dotenv';
 import express from 'express';
 import morgan from 'morgan';
 import Database from './database';
-import IndexRoute from './Routes/IndexRouter';
+import ApiIndexRouter from './Routes/ApiIndexRouter';
+import Error404Router from './Routes/Error404Router';
+import IndexBaseRouter from './Routes/IndexBaseRouter';
 import QuizRouter from './Routes/QuizRouter';
 import QuizPublicRouter from './Routes/QuizPublicRouter';
 import UsersRoute from './Routes/UsersRouter';
@@ -23,11 +25,12 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.static('public'));
 
 // routes
-app.use('/', IndexRoute);
-app.use('/api/', IndexRoute);
+app.use('/', IndexBaseRouter);
+app.use('/api/', ApiIndexRouter);
 app.use('/api/quiz', QuizPublicRouter);
 app.use('/api/user', UsersRoute);
 app.use('/api/user/quiz', QuizRouter);
+app.use('/*', Error404Router);
 
 app.listen(app.get('port'), async () => {
   await Database();
