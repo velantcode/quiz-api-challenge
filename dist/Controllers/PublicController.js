@@ -104,7 +104,7 @@ function register(_x3, _x4) {
 
 function _register() {
   _register = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(req, res) {
-    var _registerValidate, data, errors, user, token;
+    var _registerValidate, data, errors, exist, user, token;
 
     return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
@@ -121,15 +121,34 @@ function _register() {
             return _context2.abrupt("return", (0, _GlobalFunctions.returnErrorParams)(res, errors));
 
           case 4:
-            user = new _Users["default"](data);
-            _context2.next = 7;
-            return user.save();
+            _context2.next = 6;
+            return _Users["default"].find({
+              username: data.username
+            }).countDocuments().exec();
 
-          case 7:
-            _context2.next = 9;
-            return (0, _GenerateToken["default"])(req, user);
+          case 6:
+            exist = _context2.sent;
+
+            if (!(exist > 0)) {
+              _context2.next = 9;
+              break;
+            }
+
+            return _context2.abrupt("return", (0, _GlobalFunctions.getResponse)(res, {
+              status: 422,
+              error: 'Disculpe, el nombre de usuario indicado ya se encuentra registrado.'
+            }));
 
           case 9:
+            user = new _Users["default"](data);
+            _context2.next = 12;
+            return user.save();
+
+          case 12:
+            _context2.next = 14;
+            return (0, _GenerateToken["default"])(req, user);
+
+          case 14:
             token = _context2.sent;
             return _context2.abrupt("return", res.json({
               msg: 'Se ha registrado exitosamente.',
@@ -143,17 +162,17 @@ function _register() {
               }
             }));
 
-          case 13:
-            _context2.prev = 13;
+          case 18:
+            _context2.prev = 18;
             _context2.t0 = _context2["catch"](0);
             return _context2.abrupt("return", (0, _GlobalFunctions.getResponseError)(res, _context2.t0, "".concat(path, "/register")));
 
-          case 16:
+          case 21:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[0, 13]]);
+    }, _callee2, null, [[0, 18]]);
   }));
   return _register.apply(this, arguments);
 }

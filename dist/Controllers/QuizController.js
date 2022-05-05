@@ -47,8 +47,9 @@ function _getQuiz() {
               userid: tokenId
             }, {
               userid: 0,
-              questions: 0,
               __v: 0
+            }).sort({
+              createdAt: -1
             }).exec();
 
           case 4:
@@ -151,7 +152,8 @@ function _showQuiz() {
             }));
 
           case 5:
-            _context3.next = 7;
+            console.log('tokenId _id', tokenId, _id);
+            _context3.next = 8;
             return _Quiz["default"].findOne({
               _id: _id,
               userid: tokenId
@@ -160,11 +162,12 @@ function _showQuiz() {
               __v: 0
             }).exec();
 
-          case 7:
+          case 8:
             quiz = _context3.sent;
+            console.log('quiz', quiz);
 
             if (quiz) {
-              _context3.next = 10;
+              _context3.next = 12;
               break;
             }
 
@@ -173,23 +176,23 @@ function _showQuiz() {
               msg: 'Disculpe, pero el Quiz seleccionado no existe o no se encuentra disponible.'
             }));
 
-          case 10:
+          case 12:
             return _context3.abrupt("return", res.json({
               msg: 'Quiz.',
               data: quiz
             }));
 
-          case 13:
-            _context3.prev = 13;
+          case 15:
+            _context3.prev = 15;
             _context3.t0 = _context3["catch"](0);
             return _context3.abrupt("return", (0, _GlobalFunctions.getResponseError)(res, _context3.t0, "".concat(path, "/showQuiz")));
 
-          case 16:
+          case 18:
           case "end":
             return _context3.stop();
         }
       }
-    }, _callee3, null, [[0, 13]]);
+    }, _callee3, null, [[0, 15]]);
   }));
   return _showQuiz.apply(this, arguments);
 }

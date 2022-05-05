@@ -44,6 +44,15 @@ export async function register(req, res) {
 
     if (errors.length > 0) return returnErrorParams(res, errors);
 
+    // check if exist username
+    const exist = await Users.find({ username: data.username }).countDocuments().exec();
+
+    if (exist > 0)
+      return getResponse(res, {
+        status: 422,
+        error: 'Disculpe, el nombre de usuario indicado ya se encuentra registrado.',
+      });
+
     const user = new Users(data);
     await user.save();
 

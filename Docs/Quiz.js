@@ -63,9 +63,14 @@
  * @apiSuccess (data Object[]) {String} _id ID del Quiz.
  * @apiSuccess (data Object[]) {String} title Título del Quiz.
  * @apiSuccess (data Object[]) {String|Null} description Descripción del Quiz.
- * @apiSuccess (data Object[]) {String} totalQuestions Total de preguntas del Quiz..
- * @apiSuccess (data Object[]) {Number} createdAt Fecha de registro del Quiz (formato unix)..
- * @apiSuccess (data Object[]) {Number} updatedAt Fecha de la última actualización del Quiz (formato unix)..
+ * @apiSuccess (data Object[]) {Object[]} questions Total de preguntas del Quiz.
+ * @apiSuccess (data Object[]) {String} totalQuestions Total de preguntas del Quiz.
+ * @apiSuccess (data Object[]) {Number} createdAt Fecha de registro del Quiz (formato unix).
+ * @apiSuccess (data Object[]) {Number} updatedAt Fecha de la última actualización del Quiz (formato unix).
+ *
+ * @apiParam (questions Object[]) {String} question Pregunta a realizar.
+ * @apiParam (questions Object[]) {String[]} values Listado de posibles respuestas.
+ * @apiParam (questions Object[]) {Number} answer ID (array index) de la respuesta correcta.
  *
  * @apiSuccessExample {JSON} Success
  * HTTP/1.1 200 Success
@@ -76,6 +81,22 @@
       "_id": "6270b4dad751e0462d38b8d1",
       "title": "TITULO",
       "description": "Descripción",
+      "questions": [
+        {
+          "question": "Pregunta 1",
+          "values": [
+            "Respuesta 1",
+            "Respuesta 2",
+            "Respuesta 3",
+            "Respuesta 4",
+            "Respuesta 5"
+          ],
+          "answer": 3
+        },
+        .
+        .
+        .
+      ],
       "totalQuestions": 3,
       "createAt": 1651553498,
       "updateAt": 1651553498

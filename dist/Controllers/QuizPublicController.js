@@ -43,10 +43,12 @@ function _getPublicQuiz() {
             ret = [];
             _context.next = 4;
             return _Quiz["default"].find({}, {
+              'questions.answer': 0,
               createdAt: 0,
               updatedAt: 0,
-              questions: 0,
               __v: 0
+            }).sort({
+              createdAt: -1
             }).exec();
 
           case 4:
@@ -81,6 +83,7 @@ function _getPublicQuiz() {
                 _id: q._id,
                 title: q.title,
                 description: q.description,
+                questions: q.questions,
                 user: userMap[q.userid],
                 totalQuestions: q.totalQuestions
               });

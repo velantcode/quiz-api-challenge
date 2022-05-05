@@ -10,7 +10,7 @@ export async function getQuiz(req, res) {
   try {
     const { tokenId } = req.body;
 
-    const quiz = await Quiz.find({ userid: tokenId }, { userid: 0, questions: 0, __v: 0 }).exec();
+    const quiz = await Quiz.find({ userid: tokenId }, { userid: 0, __v: 0 }).sort({ createdAt: -1 }).exec();
 
     return res.json({
       msg: 'Listado de quiz.',
@@ -53,7 +53,11 @@ export async function showQuiz(req, res) {
         msg: 'Disculpe, pero el Quiz seleccionado es incorrecto.',
       });
 
+    console.log('tokenId _id', tokenId, _id);
+
     const quiz = await Quiz.findOne({ _id, userid: tokenId }, { userid: 0, __v: 0 }).exec();
+
+    console.log('quiz', quiz);
 
     if (!quiz)
       return getResponse(res, {

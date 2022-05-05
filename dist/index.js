@@ -12,6 +12,8 @@ var _dotenv = _interopRequireDefault(require("dotenv"));
 
 var _express = _interopRequireDefault(require("express"));
 
+var _morgan = _interopRequireDefault(require("morgan"));
+
 var _database = _interopRequireDefault(require("./database"));
 
 var _IndexRouter = _interopRequireDefault(require("./Routes/IndexRouter"));
@@ -30,6 +32,7 @@ app.use((0, _cors["default"])());
 app.set('port', process.env.API_PORT || 9000);
 app.set('secretKey', 'n&m#y20oBG09GX*awZuwC&C5Yde^lw4IWQHPz#S0GzgVZ@CSHx'); // middleware
 
+app.use((0, _morgan["default"])('dev'));
 app.use(_express["default"].json({
   limit: '10mb'
 }));

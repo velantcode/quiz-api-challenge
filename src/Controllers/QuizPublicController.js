@@ -10,7 +10,9 @@ const path = 'Controllers/QuizPublicController';
 export async function getPublicQuiz(req, res) {
   try {
     const ret = [];
-    const quiz = await Quiz.find({}, { createdAt: 0, updatedAt: 0, questions: 0, __v: 0 }).exec();
+    const quiz = await Quiz.find({}, { 'questions.answer': 0, createdAt: 0, updatedAt: 0, __v: 0 })
+      .sort({ createdAt: -1 })
+      .exec();
 
     if (quiz.length > 0) {
       const usersIds = quiz.map((q) => q.userid);
@@ -27,6 +29,7 @@ export async function getPublicQuiz(req, res) {
           _id: q._id,
           title: q.title,
           description: q.description,
+          questions: q.questions,
           user: userMap[q.userid],
           totalQuestions: q.totalQuestions,
         });
