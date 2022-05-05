@@ -23,6 +23,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.static('public'));
 
 // routes
+app.use('/', IndexRoute);
 app.use('/api/', IndexRoute);
 app.use('/api/quiz', QuizPublicRouter);
 app.use('/api/user', UsersRoute);

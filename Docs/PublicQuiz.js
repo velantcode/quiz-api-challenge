@@ -9,9 +9,14 @@
  *
  * @apiSuccess (data Object[]) {String} _id ID del Quiz.
  * @apiSuccess (data Object[]) {String} title Título del Quiz.
- * @apiSuccess (data Object[]) {String|Null} description Descripción del Quiz
+ * @apiSuccess (data Object[]) {String|Null} description Descripción del Quiz.
+ * @apiSuccess (data Object[]) {Object[]} questions Listado de preguntas del Quiz.
  * @apiSuccess (data Object[]) {Object} user Datos del usuario que creó el Quiz.
  * @apiSuccess (data Object[]) {Number} totalQuestions Total de preguntas del quiz.
+ *
+ * @apiParam (questions Object[]) {String} question Pregunta a realizar.
+ * @apiParam (questions Object[]) {String[]} values Listado de posibles respuestas.
+ * @apiParam (questions Object[]) {Number} answer ID (array index) de la respuesta correcta.
  *
  * @apiUse GlobalUserModel
  *
@@ -24,6 +29,21 @@
       "_id": "6270bd5e2ffb61ff5b660e21",
       "title": "TITULO",
       "description": "Descripción",
+      "questions": [
+        {
+          "question": "Pregunta 1",
+          "values": [
+            "Respuesta 1",
+            "Respuesta 2",
+            "Respuesta 3",
+            "Respuesta 4",
+            "Respuesta 5"
+          ]
+        },
+        .
+        .
+        .
+      ],
       "user": {
         "_id": "6270a54269f50b892fc76ff8",
         "username": "velant",

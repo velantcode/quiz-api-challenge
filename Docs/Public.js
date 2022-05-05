@@ -9,9 +9,25 @@
  * */
 
 /**
+ * @api {get} / (00) Test API
+ * @apiVersion 1.0.0
+ * @apiName test1Api
+ * @apiGroup Public
+ *
+ * @apiSuccess {String} msg Mensaje del proceso.
+ *
+ * @apiSuccessExample {JSON} Success
+ * HTTP/1.1 200 Success
+ * {
+  "msg": "Api Quiz 2022"
+}
+ *
+ */
+
+/**
  * @api {get} /api/ (00) Test API
  * @apiVersion 1.0.0
- * @apiName testApi
+ * @apiName test2Api
  * @apiGroup Public
  *
  * @apiSuccess {String} msg Mensaje del proceso.

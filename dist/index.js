@@ -38,6 +38,7 @@ app.use(_express["default"].json({
 }));
 app.use(_express["default"]["static"]('public')); // routes
 
+app.use('/', _IndexRouter["default"]);
 app.use('/api/', _IndexRouter["default"]);
 app.use('/api/quiz', _QuizPublicRouter["default"]);
 app.use('/api/user', _UsersRouter["default"]);
