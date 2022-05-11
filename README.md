@@ -63,10 +63,6 @@
 
     # where, token is a recived value for the login action.
 
-## Contribute
-
-¡The contributions are always welcome! Please, first read the steps to [contribute] (https://github.com/DeliiApp/server_delii_db/blob/master/CONTRIBUTING.md).
-
 ## More documentation about Express.js
 
 Official documentation [Express.js docs](https://expressjs.com).
