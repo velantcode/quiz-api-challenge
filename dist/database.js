@@ -40,7 +40,7 @@ function _Database() {
             }
 
             console.error("".concat((0, _dayjs["default"])().toISOString(), " - Error to get params to database."));
-            new Error('Error al obtener los parámetros de conexión a la base de datos.');
+            Error('Error al obtener los parámetros de conexión a la base de datos.');
             process.exit(500);
             return _context.abrupt("return");
 

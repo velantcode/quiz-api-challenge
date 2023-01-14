@@ -30,10 +30,15 @@ var _UsersRouter = _interopRequireDefault(require("./Routes/UsersRouter"));
 
 _dotenv["default"].config();
 
-var app = (0, _express["default"])(); // settings
+var app = (0, _express["default"])();
+
+var _ref = process.env || {},
+    API_PORT = _ref.API_PORT,
+    PORT = _ref.PORT; // settings
+
 
 app.use((0, _cors["default"])());
-app.set('port', process.env.API_PORT || 9000);
+app.set('port', API_PORT || PORT || 9000);
 app.set('secretKey', 'n&m#y20oBG09GX*awZuwC&C5Yde^lw4IWQHPz#S0GzgVZ@CSHx'); // middleware
 
 app.use((0, _morgan["default"])('dev'));

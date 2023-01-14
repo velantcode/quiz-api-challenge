@@ -68,9 +68,9 @@
  * @apiSuccess (data Object[]) {Number} createdAt Fecha de registro del Quiz (formato unix).
  * @apiSuccess (data Object[]) {Number} updatedAt Fecha de la última actualización del Quiz (formato unix).
  *
- * @apiParam (questions Object[]) {String} question Pregunta a realizar.
- * @apiParam (questions Object[]) {String[]} values Listado de posibles respuestas.
- * @apiParam (questions Object[]) {Number} answer ID (array index) de la respuesta correcta.
+ * @apiSuccess (questions Object[]) {String} question Pregunta a realizar.
+ * @apiSuccess (questions Object[]) {String[]} values Listado de posibles respuestas.
+ * @apiSuccess (questions Object[]) {Number} answer ID (array index) de la respuesta correcta.
  *
  * @apiSuccessExample {JSON} Success
  * HTTP/1.1 200 Success

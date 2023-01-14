@@ -11,7 +11,7 @@ export default async function Database() {
 
     if (DDB_HOST === '' || DDB_PORT === '') {
       console.error(`${dayjs().toISOString()} - Error to get params to database.`);
-      new Error('Error al obtener los parámetros de conexión a la base de datos.');
+      Error('Error al obtener los parámetros de conexión a la base de datos.');
       process.exit(500);
       return;
     }
